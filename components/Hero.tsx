@@ -1,8 +1,18 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Hero: React.FC = () => {
+  const industries = ['E-COMMERCE', 'EDUCATION', 'HEALTHCARE', 'BUSINESS', 'TECHNOLOGY', 'FINANCE'];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % industries.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-[95vh] pt-32 pb-40 red-gradient overflow-hidden flex items-center">
       {/* Dynamic Background Effects matching the image's subtle glows */}
@@ -21,7 +31,21 @@ const Hero: React.FC = () => {
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-[68px] font-extrabold text-white leading-[1.05] mb-6 tracking-tight">
-            WE BRING DEAD WEBSITES BACK TO LIFE FOR <span className="text-[#00FF00]">E-COMMERCE</span>
+            WE BRING DEAD WEBSITES BACK TO LIFE FOR{' '}
+            <span className="inline-block relative">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-[#00FF00] inline-block"
+                >
+                  {industries[currentIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
           </h1>
 
           <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-10 max-w-xl font-normal opacity-90">

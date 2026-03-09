@@ -6,21 +6,24 @@ import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 const projects = [
   {
     id: 1,
-    title: "Logisco Cargo Transport",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
-    category: "Logistic Website"
+    title: "Trustpilot",
+    image: "/images/trust pilot.jpeg",
+    category: "Review Platform",
+    link: "https://www.trustpilot.com/"
   },
   {
     id: 2,
-    title: "Crypto Investing Platform",
-    image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&q=80&w=800",
-    category: "Web Application"
+    title: "Avvo",
+    image: "/images/avvo.jpeg",
+    category: "Legal Services",
+    link: "https://www.avvo.com/"
   },
   {
     id: 3,
-    title: "Cyber Defense Solutions",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
-    category: "Corporate Portal"
+    title: "RHL Law",
+    image: "/images/rhllaw.jpeg",
+    category: "Law Firm",
+    link: "https://rhllaw.com/"
   },
   {
     id: 4,
@@ -68,7 +71,11 @@ const Projects: React.FC = () => {
               {[0, 1, 2].map((offset) => {
                 const project = projects[(index + offset) % projects.length];
                 return (
-                  <div key={project.id} className="relative group cursor-pointer">
+                  <div 
+                    key={project.id} 
+                    className="relative group cursor-pointer"
+                    onClick={() => project.link && window.open(project.link, '_blank')}
+                  >
                     <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] bg-gray-100 mb-8">
                       <img 
                         src={project.image} 
@@ -100,7 +107,7 @@ const Projects: React.FC = () => {
               key={i} 
               className="flex-shrink-0 w-32 aspect-video rounded-xl bg-gray-50 overflow-hidden border-2 border-transparent hover:border-red-500 transition-all cursor-pointer shadow-md"
              >
-               <img src={`https://picsum.photos/seed/p${i}/300/200`} className="w-full h-full object-cover opacity-60 hover:opacity-100 transition-all" />
+               <img src={`/images/slide ${i + 1}.jpeg`} className="w-full h-full object-cover opacity-60 hover:opacity-100 transition-all" alt={`Slide ${i + 1}`} />
              </motion.div>
            ))}
         </div>
