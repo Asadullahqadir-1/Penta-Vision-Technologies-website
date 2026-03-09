@@ -16,8 +16,12 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
         <div className="col-span-1 lg:col-span-1">
           <div className="flex items-center space-x-3 mb-10">
-            <div className="w-12 h-12 rounded-2xl border-2 border-red-600 flex items-center justify-center bg-white p-2">
-              <div className="w-6 h-6 rounded-lg bg-red-600"></div>
+            <div className="w-12 h-12 rounded-2xl border-2 border-red-600 flex items-center justify-center bg-white p-1 overflow-hidden">
+              <img
+                src="/images/logo.png"
+                alt="Penta Vision logo"
+                className="w-full h-full object-contain"
+              />
             </div>
             <span className="text-white font-[900] text-2xl uppercase tracking-tighter leading-none">Penta Vision<br/><span className="text-xs tracking-[0.3em] font-bold text-red-600">Technologies</span></span>
           </div>
